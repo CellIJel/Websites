@@ -1,6 +1,7 @@
 # GPTMade
-Websites made by chatGPT
+Websites made by ChatGPT.
 
+Each folder has its own README.md in the folder.
 # Translation
 A translator with a simple UI, uses either Google Translate API or ChatGPT API.
 
