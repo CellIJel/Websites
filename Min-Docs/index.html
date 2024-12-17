@@ -1,1 +1,136 @@
-<div>&lt;!DOCTYPE html&gt;</div><div>&lt;html lang="en"&gt;</div><div>&lt;head&gt;</div><div>&nbsp; &nbsp; &lt;meta charset="UTF-8"&gt;</div><div>&nbsp; &nbsp; &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</div><div>&nbsp; &nbsp; &lt;title&gt;Minimalist Text Editor&lt;/title&gt;</div><div>&nbsp; &nbsp; &lt;link rel="stylesheet" href="style.css"&gt;</div><div>&lt;/head&gt;</div><div>&lt;body&gt;</div><div>&nbsp; &nbsp; &lt;!-- Editable div that acts as a text editor --&gt;</div><div>&nbsp; &nbsp; &lt;div id="editor" contenteditable="true" data-placeholder="Start Typing Here..."&gt;&lt;/div&gt;</div><div><br></div><div>&nbsp; &nbsp; &lt;!-- Save button --&gt;</div><div>&nbsp; &nbsp; &lt;button id="saveButton"&gt;Save&lt;/button&gt;</div><div><br></div><div>&nbsp; &nbsp; &lt;!-- Save options screen --&gt;</div><div>&lt;div id="saveScreen"&gt;</div><div>&nbsp; &nbsp; &lt;h2&gt;&lt;/h2&gt;</div><div>&nbsp; &nbsp; &lt;input id="customFileName" type="text" placeholder="Enter custom file name..." /&gt;</div><div>&nbsp; &nbsp; &lt;div class="save-option-container"&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;button class="save-option" data-type="html"&gt;HTML&lt;/button&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;button class="save-option" data-type="txt"&gt;TXT&lt;/button&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;button class="save-option" data-type="png"&gt;PNG&lt;/button&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;button class="save-option" data-type="jpg"&gt;JPG&lt;/button&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;button class="save-option" data-type="css"&gt;CSS&lt;/button&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;button class="save-option" data-type="js"&gt;JS&lt;/button&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;button class="save-option" data-type="py"&gt;PY&lt;/button&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;button class="save-option" data-type="md"&gt;MD&lt;/button&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;button id="backButton"&gt;Back&lt;/button&gt;</div><div>&nbsp; &nbsp; &lt;/div&gt;</div><div><br></div><div>&nbsp; &nbsp; &lt;script&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; const editor = document.getElementById('editor');</div><div>&nbsp; &nbsp; &nbsp; &nbsp; const saveButton = document.getElementById('saveButton');</div><div>&nbsp; &nbsp; &nbsp; &nbsp; const saveScreen = document.getElementById('saveScreen');</div><div>&nbsp; &nbsp; &nbsp; &nbsp; const backButton = document.getElementById('backButton');</div><div>&nbsp; &nbsp; &nbsp; &nbsp; const customFileNameInput = document.getElementById('customFileName');</div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp; // Ensure save screen is hidden initially</div><div>&nbsp; &nbsp; &nbsp; &nbsp; window.onload = function() {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; saveScreen.style.display = 'none';</div><div>&nbsp; &nbsp; &nbsp; &nbsp; };</div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp; // Show the save options screen when Save button is clicked</div><div>&nbsp; &nbsp; &nbsp; &nbsp; saveButton.addEventListener('click', () =&gt; {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; saveScreen.style.display = 'flex';&nbsp; // Show the save screen</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; document.body.style.overflow = 'hidden';&nbsp; // Prevent scrolling</div><div>&nbsp; &nbsp; &nbsp; &nbsp; });</div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp; // Hide the save options screen and go back to editor</div><div>&nbsp; &nbsp; &nbsp; &nbsp; backButton.addEventListener('click', () =&gt; {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; saveScreen.style.display = 'none';&nbsp; // Hide the save screen</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; document.body.style.overflow = 'auto';&nbsp; // Allow scrolling</div><div>&nbsp; &nbsp; &nbsp; &nbsp; });</div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp; // Add save functionality for file types</div><div>&nbsp; &nbsp; &nbsp; &nbsp; document.querySelectorAll('.save-option').forEach(button =&gt; {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; button.addEventListener('click', () =&gt; {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; const fileType = button.getAttribute('data-type');</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; saveFile(fileType);</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; });</div><div>&nbsp; &nbsp; &nbsp; &nbsp; });</div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp; // Function to save file based on the selected type</div><div>&nbsp; &nbsp; &nbsp; &nbsp; function saveFile(fileType) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; const content = editor.innerText;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; const customFileName = customFileNameInput.value.trim() || 'editor-content'; // Get custom file name or default to 'editor-content'</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; let blob, fileName;</div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; switch (fileType) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case 'txt':</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; blob = new Blob([content], { type: 'text/plain' });</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; fileName = `${customFileName}.txt`;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; break;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case 'html':</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; blob = new Blob([editor.innerHTML], { type: 'text/html' });</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; fileName = `${customFileName}.html`;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; break;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case 'css':</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; blob = new Blob([content], { type: 'text/css' });</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; fileName = `${customFileName}.css`;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; break;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case 'js':</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; blob = new Blob([content], { type: 'application/javascript' });</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; fileName = `${customFileName}.js`;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; break;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case 'py':</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; blob = new Blob([content], { type: 'text/x-python' });</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; fileName = `${customFileName}.py`;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; break;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case 'md':</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; blob = new Blob([content], { type: 'text/markdown' });</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; fileName = `${customFileName}.md`;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; break;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case 'png':</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case 'jpg':</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; saveAsImage(fileType, customFileName);</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; default:</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; alert('Unsupported file type');</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; downloadFile(blob, fileName);</div><div>&nbsp; &nbsp; &nbsp; &nbsp; }</div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp; function downloadFile(blob, fileName) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; const a = document.createElement('a');</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; a.href = URL.createObjectURL(blob);</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; a.download = fileName;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; a.click();</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; URL.revokeObjectURL(a.href);</div><div>&nbsp; &nbsp; &nbsp; &nbsp; }</div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp; function saveAsImage(type, customFileName) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; const canvas = document.createElement('canvas');</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; const context = canvas.getContext('2d');</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; const { width, height } = editor.getBoundingClientRect();</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; canvas.width = width;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; canvas.height = height;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; context.fillStyle = 'white';</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; context.fillRect(0, 0, canvas.width, canvas.height);</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; context.font = '16px Arial';</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; context.fillStyle = 'black';</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; context.fillText(editor.innerText, 10, 20);</div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; canvas.toBlob((blob) =&gt; {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; const a = document.createElement('a');</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; a.href = URL.createObjectURL(blob);</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; a.download = `${customFileName}.${type}`;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; a.click();</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; URL.revokeObjectURL(a.href);</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }, `image/${type}`);</div><div>&nbsp; &nbsp; &nbsp; &nbsp; }</div><div>&nbsp; &nbsp; &lt;/script&gt;</div><div>&lt;/body&gt;</div><div>&lt;/html&gt;</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist Text Editor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Editable div that acts as a text editor -->
+    <div id="editor" contenteditable="true" data-placeholder="Start Typing Here..."></div>
+
+    <!-- Save button -->
+    <button id="saveButton">Save</button>
+
+    <!-- Save options screen -->
+<div id="saveScreen">
+    <h2></h2>
+    <input id="customFileName" type="text" placeholder="Enter custom file name..." />
+    <div class="save-option-container">
+        <button class="save-option" data-type="html">HTML</button>
+        <button class="save-option" data-type="txt">TXT</button>
+        <button class="save-option" data-type="png">PNG</button>
+        <button class="save-option" data-type="jpg">JPG</button>
+        <button class="save-option" data-type="css">CSS</button>
+        <button class="save-option" data-type="js">JS</button>
+        <button class="save-option" data-type="py">PY</button>
+        <button class="save-option" data-type="md">MD</button>
+        <button id="backButton">Back</button>
+    </div>
+
+    <script>
+        const editor = document.getElementById('editor');
+        const saveButton = document.getElementById('saveButton');
+        const saveScreen = document.getElementById('saveScreen');
+        const backButton = document.getElementById('backButton');
+        const customFileNameInput = document.getElementById('customFileName');
+
+        // Ensure save screen is hidden initially
+        window.onload = function() {
+            saveScreen.style.display = 'none';
+        };
+
+        // Show the save options screen when Save button is clicked
+        saveButton.addEventListener('click', () => {
+            saveScreen.style.display = 'flex';  // Show the save screen
+            document.body.style.overflow = 'hidden';  // Prevent scrolling
+        });
+
+        // Hide the save options screen and go back to editor
+        backButton.addEventListener('click', () => {
+            saveScreen.style.display = 'none';  // Hide the save screen
+            document.body.style.overflow = 'auto';  // Allow scrolling
+        });
+
+        // Add save functionality for file types
+        document.querySelectorAll('.save-option').forEach(button => {
+            button.addEventListener('click', () => {
+                const fileType = button.getAttribute('data-type');
+                saveFile(fileType);
+            });
+        });
+
+        // Function to save file based on the selected type
+        function saveFile(fileType) {
+            const content = editor.innerText;
+            const customFileName = customFileNameInput.value.trim() || 'editor-content'; // Get custom file name or default to 'editor-content'
+            let blob, fileName;
+
+            switch (fileType) {
+                case 'txt':
+                    blob = new Blob([content], { type: 'text/plain' });
+                    fileName = `${customFileName}.txt`;
+                    break;
+                case 'html':
+                    blob = new Blob([editor.innerHTML], { type: 'text/html' });
+                    fileName = `${customFileName}.html`;
+                    break;
+                case 'css':
+                    blob = new Blob([content], { type: 'text/css' });
+                    fileName = `${customFileName}.css`;
+                    break;
+                case 'js':
+                    blob = new Blob([content], { type: 'application/javascript' });
+                    fileName = `${customFileName}.js`;
+                    break;
+                case 'py':
+                    blob = new Blob([content], { type: 'text/x-python' });
+                    fileName = `${customFileName}.py`;
+                    break;
+                case 'md':
+                    blob = new Blob([content], { type: 'text/markdown' });
+                    fileName = `${customFileName}.md`;
+                    break;
+                case 'png':
+                case 'jpg':
+                    saveAsImage(fileType, customFileName);
+                    return;
+                default:
+                    alert('Unsupported file type');
+                    return;
+            }
+            downloadFile(blob, fileName);
+        }
+
+        function downloadFile(blob, fileName) {
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = fileName;
+            a.click();
+            URL.revokeObjectURL(a.href);
+        }
+
+        function saveAsImage(type, customFileName) {
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+            const { width, height } = editor.getBoundingClientRect();
+            canvas.width = width;
+            canvas.height = height;
+            context.fillStyle = 'white';
+            context.fillRect(0, 0, canvas.width, canvas.height);
+            context.font = '16px Arial';
+            context.fillStyle = 'black';
+            context.fillText(editor.innerText, 10, 20);
+
+            canvas.toBlob((blob) => {
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(blob);
+                a.download = `${customFileName}.${type}`;
+                a.click();
+                URL.revokeObjectURL(a.href);
+            }, `image/${type}`);
+        }
+    </script>
+</body>
+</html>
