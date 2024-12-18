@@ -12,3 +12,6 @@ The kick-off for this project and was made as a joke as both services already ar
 A very simple (maybe minimalist) version of making, writing, and saving documents.
 
 Can save files as: HTML, TXT, PNG, JPG, CSS, JS, PY, and MD.
+
+# Basic-Snake
+A Bare Bones version of the Snake game played with arrow keys.
