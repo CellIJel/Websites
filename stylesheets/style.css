@@ -19,12 +19,14 @@
     margin: 0 auto;
     padding: 0;
 }
+
 .div3 {
     display: list-item;
     text-align: center;
     color: #fff;
     font-size: 15px
 }
+
 a:link {
     color:#82a6ea;
 }
