@@ -1,6 +1,5 @@
 const gameBoard = document.getElementById("game-board");
 
-
 // Game configuration
 const GRID_SIZE = 20; // 20x20 grid
 let snake = [{ x: 10, y: 10 }];
@@ -9,117 +8,145 @@ let food = { x: 5, y: 5 }; // Initial food position
 let gameInterval;
 let speed = 150; // Speed of the game in ms
 
-
 // Initialize the game
 function startGame() {
-    gameInterval = setInterval(gameLoop, speed);
-    placeFood();
-    draw();
+    gameInterval = setInterval(gameLoop, speed);
+    placeFood();
+    draw();
 }
-
 
 // Game loop
 function gameLoop() {
-    moveSnake();
-    if (checkCollision()) {
-        alert("Game Over!");
-        clearInterval(gameInterval);
-        return;
-    }
-    checkFood();
-    draw();
+    moveSnake();
+    if (checkCollision()) {
+        alert("Game Over!");
+        clearInterval(gameInterval);
+        return;
+    }
+    checkFood();
+    draw();
 }
-
 
 // Move the snake
 function moveSnake() {
-    const head = { ...snake[0] };
-    head.x += direction.x;
-    head.y += direction.y;
+    const head = { ...snake[0] };
+    head.x += direction.x;
+    head.y += direction.y;
 
+    // Add new head to the snake
+    snake.unshift(head);
 
-    // Add new head to the snake
-    snake.unshift(head);
-
-
-    // Remove the last segment unless eating food
-    if (head.x !== food.x || head.y !== food.y) {
-        snake.pop();
-    }
+    // Remove the last segment unless eating food
+    if (head.x !== food.x || head.y !== food.y) {
+        snake.pop();
+    }
 }
-
 
 // Check for collisions with walls or itself
 function checkCollision() {
-    const head = snake[0];
-    return (
-        head.x < 0 || head.x >= GRID_SIZE || // Wall collision (x-axis)
-        head.y < 0 || head.y >= GRID_SIZE || // Wall collision (y-axis)
-        snake.slice(1).some(segment => segment.x === head.x && segment.y === head.y) // Self collision
-    );
+    const head = snake[0];
+    return (
+        head.x < 0 || head.x >= GRID_SIZE || // Wall collision (x-axis)
+        head.y < 0 || head.y >= GRID_SIZE || // Wall collision (y-axis)
+        snake.slice(1).some(segment => segment.x === head.x && segment.y === head.y) // Self collision
+    );
 }
-
 
 // Check if snake eats the food
 function checkFood() {
-    const head = snake[0];
-    if (head.x === food.x && head.y === food.y) {
-        placeFood();
-    }
+    const head = snake[0];
+    if (head.x === food.x && head.y === food.y) {
+        placeFood();
+    }
 }
-
 
 // Place the food in a random location
 function placeFood() {
-    food = {
-        x: Math.floor(Math.random() * GRID_SIZE),
-        y: Math.floor(Math.random() * GRID_SIZE),
-    };
+    food = {
+        x: Math.floor(Math.random() * GRID_SIZE),
+        y: Math.floor(Math.random() * GRID_SIZE),
+    };
 }
-
 
 // Draw the snake and food on the grid
 function draw() {
-    gameBoard.innerHTML = ""; // Clear the board
+    gameBoard.innerHTML = ""; // Clear the board
 
+    // Draw snake
+    snake.forEach(segment => {
+        const snakeElement = document.createElement("div");
+        snakeElement.style.gridRowStart = segment.y + 1;
+        snakeElement.style.gridColumnStart = segment.x + 1;
+        snakeElement.classList.add("snake");
+        gameBoard.appendChild(snakeElement);
+    });
 
-    // Draw snake
-    snake.forEach(segment => {
-        const snakeElement = document.createElement("div");
-        snakeElement.style.gridRowStart = segment.y + 1;
-        snakeElement.style.gridColumnStart = segment.x + 1;
-        snakeElement.classList.add("snake");
-        gameBoard.appendChild(snakeElement);
-    });
-
-
-    // Draw food
-    const foodElement = document.createElement("div");
-    foodElement.style.gridRowStart = food.y + 1;
-    foodElement.style.gridColumnStart = food.x + 1;
-    foodElement.classList.add("food");
-    gameBoard.appendChild(foodElement);
+    // Draw food
+    const foodElement = document.createElement("div");
+    foodElement.style.gridRowStart = food.y + 1;
+    foodElement.style.gridColumnStart = food.x + 1;
+    foodElement.classList.add("food");
+    gameBoard.appendChild(foodElement);
 }
-
 
 // Handle key inputs for direction
 window.addEventListener("keydown", e => {
-    switch (e.key) {
-        case "ArrowUp":
-            if (direction.y !== 1) direction = { x: 0, y: -1 };
-            break;
-        case "ArrowDown":
-            if (direction.y !== -1) direction = { x: 0, y: 1 };
-            break;
-        case "ArrowLeft":
-            if (direction.x !== 1) direction = { x: -1, y: 0 };
-            break;
-        case "ArrowRight":
-            if (direction.x !== -1) direction = { x: 1, y: 0 };
-            break;
-    }
+    switch (e.key) {
+        case "ArrowUp":
+            if (direction.y !== 1) direction = { x: 0, y: -1 };
+            break;
+        case "ArrowDown":
+            if (direction.y !== -1) direction = { x: 0, y: 1 };
+            break;
+        case "ArrowLeft":
+            if (direction.x !== 1) direction = { x: -1, y: 0 };
+            break;
+        case "ArrowRight":
+            if (direction.x !== -1) direction = { x: 1, y: 0 };
+            break;
+    }
 });
 
+// Handle touch events for direction
+window.addEventListener('touchstart', handleTouchStart, false);        
+window.addEventListener('touchmove', handleTouchMove, false);
 
-// Start the game
+let xDown = null;                                                        
+let yDown = null;
+
+function handleTouchStart(evt) {
+    const firstTouch = (evt.touches || evt.originalEvent.touches)[0];                                      
+    xDown = firstTouch.clientX;                                      
+    yDown = firstTouch.clientY;                                      
+};                                                
+
+function handleTouchMove(evt) {
+    if (!xDown || !yDown) {
+        return;
+    }
+
+    const xUp = evt.touches[0].clientX;                                    
+    const yUp = evt.touches[0].clientY;
+
+    const xDiff = xDown - xUp;
+    const yDiff = yDown - yUp;
+
+    if (Math.abs(xDiff) > Math.abs(yDiff)) {/* most significant */
+        if (xDiff > 0) {
+            direction = { x: -1, y: 0 }; // left swipe
+        } else {
+            direction = { x: 1, y: 0 }; // right swipe
+        }                       
+    } else {
+        if (yDiff > 0) {
+            direction = { x: 0, y: -1 }; // up swipe
+        } else { 
+            direction = { x: 0, y: 1 }; // down swipe
+        }                                                                 
+    }
+    /* reset values */
+    xDown = null;
+    yDown = null;                                             
+};
+
 startGame();
