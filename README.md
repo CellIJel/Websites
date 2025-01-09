@@ -1,4 +1,4 @@
-# GPTMade [cellijel.github.io](https://cellijel.github.io/)
+# GPTMade [cellijel.github.io/GPTMade](https://cellijel.github.io/GPTMade)
 Websites made by ChatGPT.
 
 Each folder has its own README.md here.
