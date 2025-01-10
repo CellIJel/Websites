@@ -13,7 +13,7 @@ function showContent() {
     }
 
     if (url) {
-        const proxyUrl = `http://localhost:3000/proxy?url=${encodeURIComponent(url)}`;
+        const proxyUrl = `http://LOCAL_IP_ADDRESS:3000/proxy?url=${encodeURIComponent(url)}`;
         contentDisplay.innerHTML = `<iframe src="${proxyUrl}" frameborder="0" width="100%" height="500px"></iframe>`;
     } else {
         contentDisplay.innerHTML = 'Please enter a valid URL.';
