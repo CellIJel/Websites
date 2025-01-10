@@ -5,15 +5,16 @@ function showContent() {
     const contentDisplay = document.getElementById('content-display');
     const autoHttpToggle = document.getElementById('auto-http-toggle').checked;
 
-    let url = urlInput.trim(); // Trim any leading/trailing whitespace
+    let url = urlInput.trim();
     if (autoHttpToggle) {
         if (!/^https?:\/\//i.test(url)) {
-            url = 'https://' + url; // Default to https:// if no protocol is specified
+            url = 'https://' + url;
         }
     }
 
     if (url) {
-        contentDisplay.innerHTML = `<iframe src="${url}" frameborder="0" width="100%" height="500px"></iframe>`;
+        const proxyUrl = `http://localhost:3000/proxy?url=${encodeURIComponent(url)}`;
+        contentDisplay.innerHTML = `<iframe src="${proxyUrl}" frameborder="0" width="100%" height="500px"></iframe>`;
     } else {
         contentDisplay.innerHTML = 'Please enter a valid URL.';
     }
