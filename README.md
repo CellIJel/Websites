@@ -20,3 +20,8 @@ A Bare Bones version of the Snake game played with arrow keys.
 It's like Trello, but also not at all, a Bare Bones.
 
 Export & Import functinality with JSON file format.
+
+# Showcase
+Allows to show off other websites or images.
+
+Images can be sized to custom size of pixels (px) and has a dark mode.
