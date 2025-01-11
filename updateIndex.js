@@ -16,10 +16,10 @@ const directories = fs.readdirSync(__dirname).filter(dir =>
 const newListItems = directories.map(dir => {
   const dirName = dir.replace(/-/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
   return `<li><a href="https://cellijel.github.io/GPTMade/${dir}/">${dirName}</a></li>`;
-}).join('\n');
+}).join('\n  ');
 
-// Replace the old list items with the new ones within the <div class="div2"> element
-indexContent = indexContent.replace(/<div class="div2">([\s\S]*?)<\/div>/, `<div class="div2">\n${newListItems}\n</div>`);
+// Replace the old list items with the new ones within the <ol style="list-style-type: none;"> element, preserving the formatting
+indexContent = indexContent.replace(/(<ol style="list-style-type: none;">)([\s\S]*?)(<\/ol>)/, `$1\n  ${newListItems}\n$3`);
 
 // Write the updated content back to index.html
 fs.writeFileSync(indexPath, indexContent, 'utf-8');
