@@ -1,0 +1,24 @@
+{
+  "name": "gptmade",
+  "version": "1.0.0",
+  "description": "Websites made by ChatGPT.",
+  "main": "updateIndex.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CellIJel/GPTMade.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CellIJel/GPTMade/issues"
+  },
+  "homepage": "https://github.com/CellIJel/GPTMade#readme",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7"
+  }
+}
