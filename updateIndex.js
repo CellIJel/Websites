@@ -7,9 +7,13 @@ const indexPath = path.join(__dirname, 'index.html');
 // Read the current content of index.html
 let indexContent = fs.readFileSync(indexPath, 'utf-8');
 
-// Find the existing directories in the repository
+// Find the existing directories in the repository, excluding specific ones
 const directories = fs.readdirSync(__dirname).filter(dir => 
-  fs.statSync(path.join(__dirname, dir)).isDirectory() && dir !== '.git' && dir !== 'node_modules' && !dir.startsWith('.github')
+  fs.statSync(path.join(__dirname, dir)).isDirectory() && 
+  dir !== '.git' && 
+  dir !== 'node_modules' && 
+  dir !== 'stylesheets' && 
+  !dir.startsWith('.github')
 );
 
 // Generate the new list items for each directory
