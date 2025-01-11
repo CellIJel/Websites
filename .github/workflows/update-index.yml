@@ -32,4 +32,4 @@ jobs:
           git commit -m 'Update index.html with new directory'
           git push
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
