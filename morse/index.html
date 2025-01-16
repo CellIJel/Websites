@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morse</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="https://raw.githubusercontent.com/CellIJel/cellijel.github.io/refs/heads/main/stylesheets/favi.ico" type="image/x-icon" />
+    <script>
+        // Inline script to apply the theme before the page renders
+        (function() {
+            function getCookie(name) {
+                const nameEQ = name + "=";
+                const ca = document.cookie.split(';');
+                for(let i = 0; i < ca.length; i++) {
+                    let c = ca[i];
+                    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+                }
+                return null;
+            }
+
+            const theme = getCookie('theme');
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
+</head>
+<body>
+    <div class="toggle-container">
+        <input type="checkbox" id="darkModeToggle" style="display: none;">
+        <label for="darkModeToggle" class="dark-mode-label">
+            <span class="dark-mode-icon" id="darkModeIcon">☀️</span>
+            <span class="tooltip" id="tooltip">← Click to switch between Light & Dark Mode</span>
+        </label>
+    </div>
+    <div class="container">
+        <h1>Morse Code Translator</h1>
+        <textarea id="inputBox" placeholder="Enter text or Morse code here..."></textarea>
+        <textarea id="outputBox" placeholder="Output will appear here..." readonly></textarea>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
