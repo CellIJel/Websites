@@ -26,9 +26,12 @@ Allows to show off other websites or images.
 
 Images can be sized to custom size of pixels (px) and has a dark mode.
 
-Local Hosting funcinality with Node.JS.
-
 # Morse
 Translates Text into Morse Code & Morse Code into Text.
 
-Second website in this repo too have a dark mode, and first to use cookies in it.
+First to use cookies in it for dark mode.
+
+# Rando-Git
+Will find a random GitHub Repository and provides a short description. (If the repo has one)
+
+Clear your history! :D (Button edition)
