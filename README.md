@@ -26,8 +26,6 @@ Allows to show off other websites or images.
 
 Images can be sized to custom size of pixels (px) and has a dark mode.
 
-Local Hosting funcinality with Node.JS.
-
 # Morse
 Translates Text into Morse Code & Morse Code into Text.
 
