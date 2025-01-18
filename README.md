@@ -31,4 +31,9 @@ Local Hosting funcinality with Node.JS.
 # Morse
 Translates Text into Morse Code & Morse Code into Text.
 
-Second website in this repo too have a dark mode, and first to use cookies in it.
+First to use cookies in it for dark mode.
+
+# Rando-Git
+Will find a random GitHub Repository and provides a short description. (If the repo has one)
+
+Clear your history! :D (Button edition)
