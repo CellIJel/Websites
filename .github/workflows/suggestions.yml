@@ -1,0 +1,29 @@
+name: Suggestions
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  create-pull-request:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        commit-message: 'Add new suggestion'
+        committer: 'GitHub Actions <actions@github.com>'
+        author: 'GitHub Actions <actions@github.com>'
+        title: 'New suggestion from ${{ github.actor }}'
+        body: |
+          **Name:** ${{ github.event.inputs.name }}
+          **Email:** ${{ github.event.inputs.email }}
+          **Suggestion:** ${{ github.event.inputs.suggestion }}
+        branch: suggestion-branch
+        base: main
