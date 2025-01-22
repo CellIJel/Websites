@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suggestions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1b1b1b;
+        }
+        .container {
+            background-color: #262626;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: white;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input, textarea, button {
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #1b1b1b;
+            color: white;
+        }
+        input[type="email"] {
+            color: #6a6a6a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Suggest a Website</h1>
+        <form id="suggestionForm">
+            <input type="text" id="name" placeholder="Your Username*" required>
+            <input type="email" id="email" placeholder="Your Email">
+            <textarea id="suggestion" placeholder="Your Suggestion*" rows="4" required></textarea>
+            <button type="submit">Submit Suggestion</button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
