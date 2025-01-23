@@ -12,7 +12,7 @@ document.getElementById('suggestionForm').addEventListener('submit', async funct
     };
 
     try {
-        const response = await fetch('https://api.github.com/repos/CellIJel/GPTMade/pulls', {
+        const response = await fetch('https://api.github.com/repos/CellIJel/GPTMade/issues', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -20,9 +20,7 @@ document.getElementById('suggestionForm').addEventListener('submit', async funct
             },
             body: JSON.stringify({
                 title: `Suggestion by ${name}`,
-                body: `**Name:** ${name}\n**Email:** ${email}\n**Suggestion:**\n${suggestion}`,
-                head: 'main',
-                base: 'main'
+                body: `**Name:** ${name}\n**Email:** ${email}\n**Suggestion:**\n${suggestion}`
             })
         });
 
