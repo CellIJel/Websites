@@ -16,7 +16,7 @@ document.getElementById('suggestionForm').addEventListener('submit', async funct
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer MY_GITHUB_TOKEN'
+                'Authorization': 'Bearer YOUR_GITHUB_TOKEN'
             },
             body: JSON.stringify({
                 title: `Suggestion by ${name}`,
@@ -29,7 +29,8 @@ document.getElementById('suggestionForm').addEventListener('submit', async funct
         if (response.ok) {
             alert('Suggestion submitted successfully!');
         } else {
-            alert('Failed to submit suggestion.');
+            const errorData = await response.json();
+            alert(`Failed to submit suggestion: ${errorData.message}`);
         }
     } catch (error) {
         alert('Error submitting suggestion.');

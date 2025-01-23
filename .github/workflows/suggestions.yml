@@ -1,9 +1,22 @@
 name: Suggestions
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Name of the submitter'
+        required: true
+        default: ''
+      email:
+        description: 'Email of the submitter'
+        required: false
+        default: 'N/A'
+      suggestion:
+        description: 'The suggestion text'
+        required: true
+        default: ''
+  issues:
+    types: [opened]
 
 jobs:
   create-pull-request:
