@@ -14,7 +14,7 @@ Each folder is its own webpage accessible [here](https://cellijel.github.io/GPTM
 A translator with a simple UI, uses either Google Translate API or ChatGPT API.
 
 The kick-off for this project and was made as a joke as both services already are free, I'm not even sure if this works correctly.<br>
-[Next](#showcase)<br>
+[Next](#min-docs)<br>
 [Back](#about-this-repository)
 
 ![image](https://github.com/user-attachments/assets/6788faa2-a0ae-40f9-9d9c-0565e7ffdb07)
