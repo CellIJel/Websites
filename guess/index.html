@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Github Issue Guessing Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="https://raw.githubusercontent.com/CellIJel/cellijel.github.io/refs/heads/main/stylesheets/favi.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+        <h1>Where does it belong?</h1>
+        <button id="toggle-dark-mode" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+        <div id="issue-container">
+            <p id="issue-title">Loading issue...</p>
+            <p id="issue-description"></p>
+        </div>
+        <div id="options-container">
+            <button class="option-button" onclick="checkAnswer(0)">Option 1</button>
+            <button class="option-button" onclick="checkAnswer(1)">Option 2</button>
+            <button class="option-button" onclick="checkAnswer(2)">Option 3</button>
+        </div>
+        <div id="result"></div>
+        <div id="score">Wins: 0 | Losses: 0</div>
+        <div id="timer">Next question in: 5</div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
