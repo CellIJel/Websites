@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
+    console.log("DOMContentLoaded event fired");
+
     // Function to get a cookie value by name
     function getCookie(name) {
         let cookieArr = document.cookie.split(";");
@@ -14,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Check for the specific cookie
     const cookieName = "specialAccess";
     const cookieValue = getCookie(cookieName);
+    console.log("Cookie value:", cookieValue);
 
     if (cookieValue) {
         // Create the link element
@@ -32,5 +35,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Append the link to the body
         document.body.appendChild(link);
+        console.log("Banner displayed");
+    } else {
+        console.log("Cookie not found");
     }
 });
