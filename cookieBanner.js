@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // Check for the specific cookie
-    const cookieName = "specialAccessGPT";
+    const cookieName = "specialAccess";
     const cookieValue = getCookie(cookieName);
 
     if (cookieValue) {
