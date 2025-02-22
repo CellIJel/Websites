@@ -73,3 +73,11 @@ body {
     z-index: 1000;
     font-weight: bold;
 }
+
+#cookie-banner a:link {
+    color: inherit; /* Use the same color as the banner text */
+}
+
+#cookie-banner a:visited {
+    color: inherit; /* Use the same color as the banner text */
+}
