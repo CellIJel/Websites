@@ -75,9 +75,9 @@ body {
 }
 
 #cookie-banner a:link {
-    color: inherit; /* Use the same color as the banner text */
+    color: #1e90ff; /* Use the specified color */
 }
 
 #cookie-banner a:visited {
-    color: inherit; /* Use the same color as the banner text */
+    color: #1e90ff; /* Use the specified color */
 }
