@@ -6,7 +6,7 @@
 }
 .div2 {
     text-align: center;
-    font-size : 20px;
+    font-size: 20px;
 }
 .div2 ol {
     display: ruby;
@@ -52,22 +52,22 @@
 }
 
 a:link {
-    color:#82a6ea;
+    color: #82a6ea;
 }
 a:visited {
-    color:#df98df;
+    color: #df98df;
 }
 body {
     background-color: #1b1b1b;
     font-family: Arial, sans-serif;
 }
 #cookie-banner {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: yellow;
-  color: black;
-  text-align: center;
-  padding: 10px;
-  z-index: 1000;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: yellow;
+    color: black;
+    text-align: center;
+    padding: 10px;
+    z-index: 1000;
 }
