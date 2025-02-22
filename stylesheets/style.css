@@ -64,10 +64,12 @@ body {
 #cookie-banner {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
     background-color: yellow;
-    color: black;
+    color: #1e90ff;
     text-align: center;
     padding: 10px;
     z-index: 1000;
+    font-weight: bold;
 }
