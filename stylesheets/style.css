@@ -61,3 +61,13 @@ body {
     background-color: #1b1b1b;
     font-family: Arial, sans-serif;
 }
+#cookie-banner {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: yellow;
+  color: black;
+  text-align: center;
+  padding: 10px;
+  z-index: 1000;
+}
