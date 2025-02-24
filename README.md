@@ -72,3 +72,19 @@ Collects Random Issues from repos, you must find out what issue belongs to which
 [Skips](#about-this-repository)<br>
 
 ![image](https://github.com/user-attachments/assets/f8e17444-eb2d-4db5-8ec1-dd8866a0875b)
+
+# Type
+A Bare bones version of a typing test.
+
+Uses the english_1k.json file from the [monkeytype repo](https://github.com/monkeytypegame/monkeytype)
+[Skips](#about-this-repository)<br>
+
+![image](https://github.com/user-attachments/assets/8b8616da-7091-4933-9d62-b28b96e4094b)
+
+# Encry
+A simple encryption web app.
+
+uses Base64 to encrypt file content and exported as a .inenci file.
+[Skips](#about-this-repository)<br>
+
+![image](https://github.com/user-attachments/assets/5104b33b-474f-4e55-a660-4851c6562c8b)
