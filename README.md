@@ -88,3 +88,11 @@ uses Base64 to encrypt file content and exported as a .inenci file.
 [Skips](#about-this-repository)<br>
 
 ![image](https://github.com/user-attachments/assets/5104b33b-474f-4e55-a660-4851c6562c8b)
+
+# Chama
+A frontend chat page for ollama
+
+Includes Markdown for formatting.<br>
+[Skips](#about-this-repository)<br>
+
+![image](https://github.com/user-attachments/assets/f3d71406-f71d-4d3c-91c7-e18eb97f4539)
