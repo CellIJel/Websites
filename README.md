@@ -11,6 +11,7 @@ Each folder is its own webpage accessible [here](https://cellijel.github.io/GPTM
 [Morse](#morse)
 [Rando-Git](#rando-git)
 [Guess](#guess)
+[Chama](#chama)
 # Translation
 A translator with a simple UI, uses either Google Translate API or ChatGPT API.
 
