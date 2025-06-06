@@ -97,3 +97,11 @@ Includes Markdown for formatting.<br>
 [Skips](#about-this-repository)<br>
 
 ![image](https://github.com/user-attachments/assets/f3d71406-f71d-4d3c-91c7-e18eb97f4539)
+
+# Tally
+Average tally counter but with a built in calculator.
+
+Has a button to replace the current count with what is in the calculator.<br>
+[Skips](#about-this-repository)<br>
+
+![image](https://github.com/user-attachments/assets/aa620f20-2350-4fd0-97fc-0f349f6447f5)
