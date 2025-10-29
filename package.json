@@ -1,22 +1,22 @@
 {
-  "name": "gptmade",
+  "name": "websites",
   "version": "1.0.0",
-  "description": "Websites made by ChatGPT.",
+  "description": "Websites.",
   "main": "updateIndex.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CellIJel/GPTMade.git"
+    "url": "git+https://github.com/CellIJel/Websites.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/CellIJel/GPTMade/issues"
+    "url": "https://github.com/CellIJel/Websites/issues"
   },
-  "homepage": "https://github.com/CellIJel/GPTMade#readme",
+  "homepage": "https://github.com/CellIJel/Websites#readme",
   "dependencies": {
     "fs": "^0.0.1-security",
     "path": "^0.12.7"
