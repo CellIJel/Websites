@@ -1,7 +1,4 @@
-# About This Repository
-Websites made by ChatGPT.
-
-Each folder is its own webpage accessible [here](https://cellijel.github.io/GPTMade)
+Each folder is its own webpage accessible [here](https://cellijel.github.io/Websites)
 
 [Translation](#translation)
 [Min-Docs](#min-docs)
